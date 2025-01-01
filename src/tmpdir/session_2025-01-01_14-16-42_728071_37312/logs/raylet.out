@@ -1,0 +1,29 @@
+[2025-01-01 14:16:48,161 I 37474 37474] (raylet) io_service_pool.cc:35: IOServicePool is running with 1 io_service.
+[2025-01-01 14:16:48,164 I 37474 37474] (raylet) store_runner.cc:32: Allowing the Plasma store to use up to 8.75754GB of memory.
+[2025-01-01 14:16:48,164 I 37474 37474] (raylet) store_runner.cc:48: Starting object store with directory /dev/shm, fallback ./tmpdir, and huge page support disabled
+[2025-01-01 14:16:48,164 I 37474 37539] (raylet) dlmalloc.cc:154: create_and_mmap_buffer(8757575688, /dev/shm/plasmaXXXXXX)
+[2025-01-01 14:16:48,175 E 37474 37474] (raylet) logging.cc:97: Unhandled exception: N5boost10wrapexceptINS_6system12system_errorEEE. what(): Invalid argument
+[2025-01-01 14:16:48,176 E 37474 37539] (raylet) logging.cc:97: Unhandled exception: N5boost10wrapexceptINS_6system12system_errorEEE. what(): Invalid argument
+[2025-01-01 14:16:48,229 E 37474 37539] (raylet) logging.cc:104: Stack trace: 
+ /home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x51a7fa) [0x555d1c7577fa] ray::operator<<()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x51cfa8) [0x555d1c759fa8] ray::TerminateHandler()
+/lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa37c) [0x7f67eab3b37c]
+/lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3e7) [0x7f67eab3b3e7]
+/lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa699) [0x7f67eab3b699]
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x15bf3e) [0x555d1c398f3e] boost::throw_exception<>()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa77360) [0x555d1ccb4360] boost::asio::detail::do_throw_error()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa77560) [0x555d1ccb4560] boost::asio::ip::make_address()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa77585) [0x555d1ccb4585] boost::asio::ip::make_address()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x51761c) [0x555d1c75461c] ParseUrlEndpoint()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x3347e6) [0x555d1c5717e6] plasma::PlasmaStore::PlasmaStore()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x32d668) [0x555d1c56a668] plasma::PlasmaStoreRunner::Start()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x2c92c5) [0x555d1c5062c5] std::thread::_State_impl<>::_M_run()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xac4010) [0x555d1cd01010] execute_native_thread_routine
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x8609) [0x7f67eadd4609] start_thread
+/lib/x86_64-linux-gnu/libc.so.6(clone+0x43) [0x7f67ea9a3353] __clone
+
+[2025-01-01 14:16:48,230 E 37474 37539] (raylet) logging.cc:361: *** SIGABRT received at time=1735762608 on cpu 1 ***
+[2025-01-01 14:16:48,230 E 37474 37539] (raylet) logging.cc:361: PC: @     0x7f67ea8c700b  (unknown)  raise
+[2025-01-01 14:16:48,230 E 37474 37539] (raylet) logging.cc:361:     @     0x7f67eade0420       2208  (unknown)
+[2025-01-01 14:16:48,230 E 37474 37539] (raylet) logging.cc:361:     @     0x7f67eab3b37c  (unknown)  (unknown)
+[2025-01-01 14:16:48,230 E 37474 37539] (raylet) logging.cc:361:     @     0x7f67eab3b5c0  (unknown)  (unknown)

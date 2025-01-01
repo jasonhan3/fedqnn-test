@@ -1,0 +1,45 @@
+[2025-01-01 14:33:34,620 E 38415 38415] (raylet) logging.cc:97: Unhandled exception: N5boost10wrapexceptINS_6system12system_errorEEE. what(): Invalid argument
+[2025-01-01 14:33:34,620 E 38415 38477] (raylet) logging.cc:97: Unhandled exception: N5boost10wrapexceptINS_6system12system_errorEEE. what(): Invalid argument
+[2025-01-01 14:33:34,684 E 38415 38415] (raylet) logging.cc:104: Stack trace: 
+ /home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x51a7fa) [0x55daac4127fa] ray::operator<<()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x51cfa8) [0x55daac414fa8] ray::TerminateHandler()
+/lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa37c) [0x7f64313bc37c]
+/lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3e7) [0x7f64313bc3e7]
+/lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa699) [0x7f64313bc699]
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x15bf3e) [0x55daac053f3e] boost::throw_exception<>()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa77360) [0x55daac96f360] boost::asio::detail::do_throw_error()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa77560) [0x55daac96f560] boost::asio::ip::make_address()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa77585) [0x55daac96f585] boost::asio::ip::make_address()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x51761c) [0x55daac40f61c] ParseUrlEndpoint()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x4afa21) [0x55daac3a7a21] ray::ConnectSocketRetry()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x34c91e) [0x55daac24491e] plasma::PlasmaClient::Impl::Connect()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x34ccf6) [0x55daac244cf6] plasma::PlasmaClient::Connect()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x2de683) [0x55daac1d6683] ray::ObjectManager::ObjectManager()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x2793af) [0x55daac1713af] ray::raylet::NodeManager::NodeManager()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x2169df) [0x55daac10e9df] ray::raylet::Raylet::Raylet()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x1ce448) [0x55daac0c6448] main::{lambda()#1}::operator()()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x1cf80b) [0x55daac0c780b] std::_Function_handler<>::_M_invoke()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x3f648f) [0x55daac2ee48f] std::_Function_handler<>::_M_invoke()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x402100) [0x55daac2fa100] ray::rpc::GcsRpcClient::GetInternalConfig()::{lambda()#2}::operator()()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x3a8b25) [0x55daac2a0b25] ray::rpc::ClientCallImpl<>::OnReplyReceived()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x250145) [0x55daac148145] std::_Function_handler<>::_M_invoke()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x4f9116) [0x55daac3f1116] EventTracker::RecordExecution()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x48f00e) [0x55daac38700e] std::_Function_handler<>::_M_invoke()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x48f486) [0x55daac387486] boost::asio::detail::completion_handler<>::do_complete()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa7591b) [0x55daac96d91b] boost::asio::detail::scheduler::do_run_one()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa77131) [0x55daac96f131] boost::asio::detail::scheduler::run()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa773a0) [0x55daac96f3a0] boost::asio::io_context::run()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x1630b9) [0x55daac05b0b9] main
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3) [0x7f6431129083] __libc_start_main
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x1a3ed7) [0x55daac09bed7]
+
+*** SIGABRT received at time=1735763614 on cpu 3 ***
+PC: @     0x7f643114800b  (unknown)  raise
+    @     0x7f6431661420  501492256  (unknown)
+    @     0x7f64313bc37c  (unknown)  (unknown)
+    @     0x7f64313bc5c0  (unknown)  (unknown)
+[2025-01-01 14:33:34,684 E 38415 38415] (raylet) logging.cc:361: *** SIGABRT received at time=1735763614 on cpu 3 ***
+[2025-01-01 14:33:34,684 E 38415 38415] (raylet) logging.cc:361: PC: @     0x7f643114800b  (unknown)  raise
+[2025-01-01 14:33:34,684 E 38415 38415] (raylet) logging.cc:361:     @     0x7f6431661420  501492256  (unknown)
+[2025-01-01 14:33:34,684 E 38415 38415] (raylet) logging.cc:361:     @     0x7f64313bc37c  (unknown)  (unknown)
+[2025-01-01 14:33:34,684 E 38415 38415] (raylet) logging.cc:361:     @     0x7f64313bc5c0  (unknown)  (unknown)

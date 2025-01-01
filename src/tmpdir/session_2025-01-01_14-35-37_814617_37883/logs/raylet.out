@@ -1,0 +1,44 @@
+[2025-01-01 14:35:43,665 I 38647 38647] (raylet) io_service_pool.cc:35: IOServicePool is running with 1 io_service.
+[2025-01-01 14:35:43,667 I 38647 38647] (raylet) store_runner.cc:32: Allowing the Plasma store to use up to 8.67656GB of memory.
+[2025-01-01 14:35:43,667 I 38647 38647] (raylet) store_runner.cc:48: Starting object store with directory /dev/shm, fallback ./tmpdir, and huge page support disabled
+[2025-01-01 14:35:43,668 I 38647 38709] (raylet) dlmalloc.cc:154: create_and_mmap_buffer(8676573192, /dev/shm/plasmaXXXXXX)
+[2025-01-01 14:35:43,679 E 38647 38647] (raylet) logging.cc:97: Unhandled exception: N5boost10wrapexceptINS_6system12system_errorEEE. what(): Invalid argument
+[2025-01-01 14:35:43,679 E 38647 38709] (raylet) logging.cc:97: Unhandled exception: N5boost10wrapexceptINS_6system12system_errorEEE. what(): Invalid argument
+[2025-01-01 14:35:43,743 E 38647 38647] (raylet) logging.cc:104: Stack trace: 
+ /home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x51a7fa) [0x5633d8bac7fa] ray::operator<<()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x51cfa8) [0x5633d8baefa8] ray::TerminateHandler()
+/lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa37c) [0x7fdaec71737c]
+/lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3e7) [0x7fdaec7173e7]
+/lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa699) [0x7fdaec717699]
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x15bf3e) [0x5633d87edf3e] boost::throw_exception<>()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa77360) [0x5633d9109360] boost::asio::detail::do_throw_error()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa77560) [0x5633d9109560] boost::asio::ip::make_address()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa77585) [0x5633d9109585] boost::asio::ip::make_address()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x51761c) [0x5633d8ba961c] ParseUrlEndpoint()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x4afa21) [0x5633d8b41a21] ray::ConnectSocketRetry()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x34c91e) [0x5633d89de91e] plasma::PlasmaClient::Impl::Connect()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x34ccf6) [0x5633d89decf6] plasma::PlasmaClient::Connect()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x2de683) [0x5633d8970683] ray::ObjectManager::ObjectManager()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x2793af) [0x5633d890b3af] ray::raylet::NodeManager::NodeManager()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x2169df) [0x5633d88a89df] ray::raylet::Raylet::Raylet()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x1ce448) [0x5633d8860448] main::{lambda()#1}::operator()()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x1cf80b) [0x5633d886180b] std::_Function_handler<>::_M_invoke()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x3f648f) [0x5633d8a8848f] std::_Function_handler<>::_M_invoke()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x402100) [0x5633d8a94100] ray::rpc::GcsRpcClient::GetInternalConfig()::{lambda()#2}::operator()()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x3a8b25) [0x5633d8a3ab25] ray::rpc::ClientCallImpl<>::OnReplyReceived()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x250145) [0x5633d88e2145] std::_Function_handler<>::_M_invoke()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x4f9116) [0x5633d8b8b116] EventTracker::RecordExecution()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x48f00e) [0x5633d8b2100e] std::_Function_handler<>::_M_invoke()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x48f486) [0x5633d8b21486] boost::asio::detail::completion_handler<>::do_complete()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa7591b) [0x5633d910791b] boost::asio::detail::scheduler::do_run_one()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa77131) [0x5633d9109131] boost::asio::detail::scheduler::run()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0xa773a0) [0x5633d91093a0] boost::asio::io_context::run()
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x1630b9) [0x5633d87f50b9] main
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3) [0x7fdaec484083] __libc_start_main
+/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/core/src/ray/raylet/raylet(+0x1a3ed7) [0x5633d8835ed7]
+
+[2025-01-01 14:35:43,744 E 38647 38647] (raylet) logging.cc:361: *** SIGABRT received at time=1735763743 on cpu 1 ***
+[2025-01-01 14:35:43,744 E 38647 38647] (raylet) logging.cc:361: PC: @     0x7fdaec4a300b  (unknown)  raise
+[2025-01-01 14:35:43,744 E 38647 38647] (raylet) logging.cc:361:     @     0x7fdaec9bc420  798150960  (unknown)
+[2025-01-01 14:35:43,744 E 38647 38647] (raylet) logging.cc:361:     @     0x7fdaec71737c  (unknown)  (unknown)
+[2025-01-01 14:35:43,744 E 38647 38647] (raylet) logging.cc:361:     @     0x7fdaec7175c0  (unknown)  (unknown)

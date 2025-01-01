@@ -1,0 +1,3 @@
+2025-01-01 14:30:56,220	INFO log_monitor.py:250 -- Beginning to track file raylet.err
+2025-01-01 14:30:56,221	INFO log_monitor.py:250 -- Beginning to track file gcs_server.err
+2025-01-01 14:30:56,223	INFO log_monitor.py:250 -- Beginning to track file monitor.log

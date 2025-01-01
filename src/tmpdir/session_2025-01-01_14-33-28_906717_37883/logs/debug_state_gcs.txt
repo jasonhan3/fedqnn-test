@@ -1,0 +1,85 @@
+GcsNodeManager: 
+- RegisterNode request count: 0
+- DrainNode request count: 0
+- GetAllNodeInfo request count: 298
+- GetInternalConfig request count: 1
+
+GcsActorManager: 
+- RegisterActor request count: 0
+- CreateActor request count: 0
+- GetActorInfo request count: 0
+- GetNamedActorInfo request count: 0
+- GetAllActorInfo request count: 0
+- KillActor request count: 0
+- ListNamedActors request count: 0
+- Registered actors count: 0
+- Destroyed actors count: 0
+- Named actors count: 0
+- Unresolved actors count: 0
+- Pending actors count: 0
+- Created actors count: 0
+- owners_: 0
+- actor_to_register_callbacks_: 0
+- actor_to_create_callbacks_: 0
+- sorted_destroyed_actor_list_: 0
+
+GcsResourceManager: 
+- GetResources request count: 0
+- GetAllAvailableResources request count0
+- ReportResourceUsage request count: 0
+- GetAllResourceUsage request count: 128
+
+GcsPlacementGroupManager: 
+- CreatePlacementGroup request count: 0
+- RemovePlacementGroup request count: 0
+- GetPlacementGroup request count: 0
+- GetAllPlacementGroup request count: 0
+- WaitPlacementGroupUntilReady request count: 0
+- GetNamedPlacementGroup request count: 0
+- Scheduling pending placement group count: 0
+- Registered placement groups count: 0
+- Named placement group count: 0
+- Pending placement groups count: 0
+- Infeasible placement groups count: 0
+
+GcsPublisher {}
+
+[runtime env manager] ID to URIs table:
+[runtime env manager] URIs reference table:
+
+GcsTaskManager: 
+-Total num task events reported: 0
+-Total num status task events dropped: 0
+-Total num profile events dropped: 0
+-Total num bytes of task event stored: 0MiB
+-Current num of task events stored: 0
+-Total num of actor creation tasks: 0
+-Total num of actor tasks: 0
+-Total num of normal tasks: 0
+-Total num of driver tasks: 0
+
+GrpcBasedResourceBroadcaster:
+- Tracked nodes: 0
+
+
+Global stats: 10628 total (4 active)
+Queueing time: mean = 67.666 us, max = 38.006 ms, min = 972.000 ns, total = 719.157 ms
+Execution time:  mean = 56.519 us, total = 600.685 ms
+Event stats:
+	RaySyncer.deadline_timer.report_resource_report - 6400 total (1 active), CPU time: mean = 14.200 us, total = 90.877 ms
+	GcsInMemoryStore.Put - 914 total (0 active), CPU time: mean = 11.317 us, total = 10.343 ms
+	InternalKVGcsService.grpc_server.InternalKVPut - 913 total (0 active), CPU time: mean = 9.949 us, total = 9.084 ms
+	InternalKVGcsService.grpc_client.InternalKVPut - 774 total (0 active), CPU time: mean = 5.981 us, total = 4.629 ms
+	RayletLoadPulled - 641 total (1 active), CPU time: mean = 3.141 us, total = 2.013 ms
+	NodeInfoGcsService.grpc_server.GetAllNodeInfo - 298 total (0 active), CPU time: mean = 11.975 us, total = 3.569 ms
+	GcsInMemoryStore.Get - 173 total (0 active), CPU time: mean = 13.860 us, total = 2.398 ms
+	InternalKVGcsService.grpc_server.InternalKVGet - 172 total (0 active), CPU time: mean = 34.635 us, total = 5.957 ms
+	NodeResourceInfoGcsService.grpc_server.GetAllResourceUsage - 128 total (0 active), CPU time: mean = 15.138 us, total = 1.938 ms
+	NodeInfoGcsService.grpc_server.CheckAlive - 127 total (0 active), CPU time: mean = 22.962 us, total = 2.916 ms
+	GCSServer.deadline_timer.debug_state_dump - 64 total (1 active, 1 running), CPU time: mean = 6.577 ms, total = 420.937 ms
+	GCSServer.deadline_timer.debug_state_event_stats_print - 11 total (1 active), CPU time: mean = 220.753 us, total = 2.428 ms
+	GcsInMemoryStore.GetAll - 6 total (0 active), CPU time: mean = 6.358 ms, total = 38.147 ms
+	PeriodicalRunner.RunFnPeriodically - 4 total (0 active), CPU time: mean = 1.345 ms, total = 5.378 ms
+	NodeInfoGcsService.grpc_server.GetInternalConfig - 1 total (0 active), CPU time: mean = 20.890 us, total = 20.890 us
+	GcsInMemoryStore.Delete - 1 total (0 active), CPU time: mean = 11.422 us, total = 11.422 us
+	InternalKVGcsService.grpc_server.InternalKVDel - 1 total (0 active), CPU time: mean = 38.213 us, total = 38.213 us

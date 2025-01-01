@@ -1,0 +1,143 @@
+2025-01-01 14:33:32,951	INFO monitor.py:651 -- Starting monitor using ray installation: /home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/__init__.py
+2025-01-01 14:33:32,953	INFO monitor.py:652 -- Ray version: 2.3.0
+2025-01-01 14:33:32,955	INFO monitor.py:653 -- Ray commit: cf7a56b4b0b648c324722df7c99c168e92ff0b45
+2025-01-01 14:33:32,956	INFO monitor.py:654 -- Monitor started with command: ['/home/jh146/ptl_rdf/QFL-MLNCP-NeurIPS/fedqnn-3/lib/python3.10/site-packages/ray/autoscaler/_private/monitor.py', '--logs-dir=./tmpdir/session_2025-01-01_14-33-28_906717_37883/logs', '--logging-rotate-bytes=536870912', '--logging-rotate-backup-count=5', '--gcs-address=10.134.196.4:52493', '--monitor-ip=10.134.196.4']
+2025-01-01 14:33:32,963	INFO monitor.py:167 -- session_name: session_2025-01-01_14-33-28_906717_37883
+2025-01-01 14:33:32,979	WARNING monitor.py:214 -- `prometheus_client` not found, so metrics will not be exported.
+2025-01-01 14:33:32,980	INFO monitor.py:218 -- Monitor: Started
+2025-01-01 14:33:33,018	INFO autoscaler.py:276 -- disable_node_updaters:False
+2025-01-01 14:33:33,019	INFO autoscaler.py:284 -- disable_launch_config_check:False
+2025-01-01 14:33:33,021	INFO autoscaler.py:296 -- foreground_node_launch:False
+2025-01-01 14:33:33,024	INFO autoscaler.py:306 -- worker_liveness_check:True
+2025-01-01 14:33:33,026	INFO autoscaler.py:314 -- worker_rpc_drain:True
+2025-01-01 14:33:33,029	INFO autoscaler.py:364 -- StandardAutoscaler: {'cluster_name': 'default', 'max_workers': 0, 'upscaling_speed': 1.0, 'docker': {}, 'idle_timeout_minutes': 0, 'provider': {'type': 'readonly', 'use_node_id_as_ip': True}, 'auth': {}, 'available_node_types': {'ray.head.default': {'resources': {}, 'node_config': {}, 'max_workers': 0}}, 'head_node_type': 'ray.head.default', 'file_mounts': {}, 'cluster_synced_files': [], 'file_mounts_sync_continuously': False, 'rsync_exclude': [], 'rsync_filter': [], 'initialization_commands': [], 'setup_commands': [], 'head_setup_commands': [], 'worker_setup_commands': [], 'head_start_ray_commands': [], 'worker_start_ray_commands': [], 'head_node': {}, 'worker_nodes': {}}
+2025-01-01 14:33:33,035	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:33:38,039	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:33:43,050	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:33:48,056	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:33:53,066	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:33:58,071	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:34:03,078	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:34:08,088	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:34:13,095	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:34:18,106	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:34:23,114	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:34:28,124	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:34:33,135	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:34:38,141	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:34:43,147	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:34:48,157	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:34:53,167	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:34:58,173	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:35:03,182	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:35:08,188	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:35:13,198	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:35:18,209	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:35:23,218	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:35:28,229	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:35:33,236	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:35:38,243	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:35:43,251	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:35:48,259	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:35:53,268	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:35:58,278	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:36:03,287	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:36:08,291	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:36:13,299	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:36:18,305	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:36:23,315	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:36:28,323	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:36:33,331	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:36:38,340	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:36:43,349	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:36:48,358	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:36:53,367	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:36:58,377	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:37:03,387	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:37:08,396	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:37:13,405	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:37:18,414	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:37:23,427	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:37:28,436	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:37:33,445	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:37:38,457	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:37:43,463	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:37:48,472	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:37:53,481	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:37:58,491	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:38:03,496	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:38:08,506	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:38:13,512	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:38:18,521	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:38:23,532	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:38:28,539	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:38:33,547	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:38:38,555	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:38:43,563	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:38:48,573	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:38:53,581	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:38:58,586	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:39:03,595	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:39:08,608	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:39:13,619	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:39:18,624	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:39:23,637	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:39:28,647	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:39:33,655	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:39:38,663	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:39:43,670	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:39:48,679	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:39:53,686	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:39:58,695	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:40:03,703	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:40:08,707	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:40:13,715	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:40:18,723	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:40:23,730	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:40:28,740	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:40:33,749	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:40:38,756	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:40:43,764	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:40:48,773	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:40:53,777	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:40:58,786	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:41:03,794	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:41:08,802	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:41:13,810	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:41:18,819	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:41:23,827	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:41:28,838	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:41:33,844	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:41:38,853	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:41:43,863	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:41:48,872	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:41:53,880	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:41:58,894	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:42:03,903	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:42:08,946	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:42:13,967	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:42:18,980	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:42:23,989	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:42:28,999	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:42:34,010	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:42:39,020	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:42:44,031	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:42:49,041	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:42:54,050	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:42:59,059	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:43:04,069	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:43:09,079	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:43:14,085	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:43:19,095	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:43:24,105	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:43:29,111	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:43:34,122	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:43:39,130	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:43:44,138	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:43:49,146	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:43:54,155	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:43:59,162	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:44:04,168	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:44:09,175	INFO monitor.py:388 -- Autoscaler has not yet received load metrics. Waiting.
+2025-01-01 14:44:10,961	ERROR monitor.py:503 -- Error in monitor loop
+NoneType: None
