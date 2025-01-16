@@ -387,3 +387,25 @@ def aggregate_custom(results: List[Tuple[NDArrays, int]]) -> NDArrays:
         for layer_updates in zip(*weighted_weights)
     ]
     return weights_prime
+
+# Redefine the aggregate function (defined in Flower)
+def aggregate_custom_circular(results: List[Tuple[NDArrays, int]]) -> NDArrays:
+    """Compute weighted average.
+    Args:
+        results: List of tuples containing the model weights and the number of samples used to compute the weights.
+    Returns: A list of model weights averaged according to the number of samples used to compute the weights.
+    """
+    # Calculate the total number of examples used during training
+    
+    np.save("agg_cust_circular_res.npy", np.array(results))
+    num_examples_total = sum([num_examples for _, num_examples in results])
+    # Create a list of weights, each multiplied by the related number of examples
+    weighted_weights = [
+        [layer * num_examples for layer in weights] for weights, num_examples in results
+    ]
+    # Compute average weights of each layer
+    weights_prime: NDArrays = [
+        reduce(np.add, layer_updates) * (1/num_examples_total)
+        for layer_updates in zip(*weighted_weights)
+    ]
+    return weights_prime
