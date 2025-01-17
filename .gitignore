@@ -3,3 +3,6 @@ data
 results
 *.pt
 *pycache*
+fed_qnn_test_repo_loaded_clifftrunc*
+fedqnn-3
+tmpdir
