@@ -414,8 +414,8 @@ def aggregate_custom_circular(results: List[Tuple[NDArrays, int]], quantum_layer
             # sample_counts_arr = np.array(sample_counts)
             sample_counts = sample_counts.reshape(-1, 1, 1)
 
-            x_sum = np.sum(sample_counts[:, None] * np.cos(stacked_angles), axis=0)
-            y_sum = np.sum(sample_counts[:, None] * np.sin(stacked_angles), axis=0)
+            x_sum = np.sum(sample_counts * np.cos(stacked_angles), axis=0)
+            y_sum = np.sum(sample_counts * np.sin(stacked_angles), axis=0)
 
             avg_angles = np.arctan2(y_sum, x_sum)
 
