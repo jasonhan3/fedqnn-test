@@ -24,6 +24,8 @@ def split_data_client(dataset, num_clients, seed):
     partition_size = len(dataset) // num_clients
     lengths = [partition_size] * (num_clients - 1)
     lengths += [len(dataset) - sum(lengths)]
+    print(f"split_data_client, len(lengths): {len(lengths)}")
+    print(f"split_data_client, lengths: {lengths}")
     ds = random_split(dataset, lengths, torch.Generator().manual_seed(seed))
     return ds
 
@@ -72,6 +74,8 @@ def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num
 
     # Split training set into `num_clients` partitions to simulate different local datasets
     datasets_train = split_data_client(trainset, num_clients, seed)
+    print(f"load_datasets, type(datasets_train): {type(datasets_train)}")
+    print(f"load_datasets, datasets_train: {datasets_train}")
     if data_path_val:
         valset = datasets.ImageFolder(data_path_val, transform=transformer)
         datasets_val = split_data_client(valset, num_clients, seed)    
