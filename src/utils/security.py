@@ -389,7 +389,7 @@ def aggregate_custom(results: List[Tuple[NDArrays, int]]) -> NDArrays:
     return weights_prime
 
 # Redefine the aggregate function (defined in Flower)
-def aggregate_custom_circular(results: List[Tuple[NDArrays, int]]) -> NDArrays:
+def aggregate_custom_circular(results: List[Tuple[NDArrays, int]], quantum_layer_indices: List[int] = [18]) -> NDArrays:
     """Compute weighted average.
     Args:
         results: List of tuples containing the model weights and the number of samples used to compute the weights.
@@ -397,15 +397,46 @@ def aggregate_custom_circular(results: List[Tuple[NDArrays, int]]) -> NDArrays:
     """
     # Calculate the total number of examples used during training
     
-    np.save("agg_cust_circular_res.npy", np.array(results))
+    # np.save("agg_cust_circular_res.npy", np.array(results))
     num_examples_total = sum([num_examples for _, num_examples in results])
-    # Create a list of weights, each multiplied by the related number of examples
-    weighted_weights = [
-        [layer * num_examples for layer in weights] for weights, num_examples in results
-    ]
-    # Compute average weights of each layer
-    weights_prime: NDArrays = [
-        reduce(np.add, layer_updates) * (1/num_examples_total)
-        for layer_updates in zip(*weighted_weights)
-    ]
-    return weights_prime
+
+    # assumes homogenous weight structures
+    num_layers = len(results[0][0])
+
+    aggregated_weights = []
+
+    for layer_idx in range(num_layers):
+        layer_params_list = [client_weights[layer_idx] for client_weights, _ in results]
+        sample_counts = [num_examples for _, num_examples in results]
+
+        if layer_idx in quantum_layer_indices:
+            stacked_angles = np.stack(layer_params_list, axis=0)
+            sample_counts_arr = np.array(sample_counts)
+
+            x_sum = np.sum(sample_counts_arr[:, None] * np.cos(stacked_angles), axis=0)
+            y_sum = np.sum(sample_counts_arr[:, None] * np.sin(stacked_angles), axis=0)
+
+            avg_angles = np.arctan2(y_sum, x_sum)
+
+            aggregated_weights.append(avg_angles)
+        
+        else:
+            weighted_sums = sum(
+                w * count for w, count in zip(layer_params_list, sample_counts)
+            )
+            avg_params = weighted_sums / num_examples_total
+            aggregated_weights.append(avg_params)
+
+    return aggregated_weights
+
+
+    # # Create a list of weights, each multiplied by the related number of examples
+    # weighted_weights = [
+    #     [layer * num_examples for layer in weights] for weights, num_examples in results
+    # ]
+    # # Compute average weights of each layer
+    # weights_prime: NDArrays = [
+    #     reduce(np.add, layer_updates) * (1/num_examples_total)
+    #     for layer_updates in zip(*weighted_weights)
+    # ]
+    # return weights_prime
