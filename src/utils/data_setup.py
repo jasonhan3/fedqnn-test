@@ -76,7 +76,7 @@ def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num
         if resize is not None:
             list_transforms = [transforms.Resize((resize, resize))] + list_transforms
         
-        list_transforms = transforms.Lambda(lambda img: img.convert("RGB")) + list_transforms
+        list_transforms = [transforms.Lambda(lambda img: img.convert("RGB"))] + list_transforms
 
         transformer = transforms.Compose(
             list_transforms
