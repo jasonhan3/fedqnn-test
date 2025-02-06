@@ -42,6 +42,9 @@ def classes_string(name_dataset):
 
     elif name_dataset == "MRI":
         classes = ('glioma', 'meningioma', 'notumor', 'pituitary')
+    
+    elif name_dataset == "MNIST":
+        classes = ('4', '9')
 
     else:
         print("Warning problem : unspecified dataset")

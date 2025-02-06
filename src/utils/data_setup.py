@@ -2,7 +2,7 @@
 Contains functionality for creating PyTorch DataLoaders for image classification data.
 """
 from torchvision import datasets, transforms
-from torch.utils.data import DataLoader, random_split
+from torch.utils.data import DataLoader, random_split, Subset
 from .common import *
 
 NUM_WORKERS = os.cpu_count()
@@ -10,7 +10,9 @@ NUM_WORKERS = os.cpu_count()
 # Normalization values for the different datasets
 NORMALIZE_DICT = {    
     'cifar': dict(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5)),
-    'MRI': dict(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),    
+    'MRI': dict(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
+    # TODO: this is just from online; verify it
+    'MNIST': dict(mean=(0.1307, 0.1307, 0.137), std=(0.3081, 0.3081, 0.3081))   
     }
 
 def split_data_client(dataset, num_clients, seed):
@@ -33,7 +35,7 @@ def split_data_client(dataset, num_clients, seed):
 # Define model, architecture and dataset
 # The DataLoaders downloads the training and test data that are then normalized.
 def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num_workers: int, splitter=10,
-                  dataset="cifar", data_path="./data/", data_path_val=""):
+                  dataset="cifar", data_path="./data/", data_path_val="", classes_of_interest=[4, 9]):
     """
     This function is used to load the dataset and split it into train and test for each client.
     :param num_clients: the number of clients
@@ -59,7 +61,7 @@ def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num
         trainset = datasets.CIFAR10(data_path + dataset, train=True, download=True, transform=transformer)
         testset = datasets.CIFAR10(data_path + dataset, train=False, download=True, transform=transformer)
        
-    else:
+    elif dataset == "MRI":
         if resize is not None:
             list_transforms = [transforms.Resize((resize, resize))] + list_transforms
 
@@ -69,6 +71,31 @@ def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num
         supp_ds_store(data_path + dataset + "/Testing")
         trainset = datasets.ImageFolder(data_path + dataset + "/Training", transform=transformer)
         testset = datasets.ImageFolder(data_path + dataset + "/Testing", transform=transformer)
+    elif dataset == "MNIST":
+
+        if resize is not None:
+            list_transforms = [transforms.Resize((resize, resize))] + list_transforms
+        
+        list_transforms = transforms.Lambda(lambda img: img.convert("RGB")) + list_transforms
+
+        transformer = transforms.Compose(
+            list_transforms
+        )
+
+
+        
+        full_train = datasets.MNIST(root=data_path + dataset, train=True, download=True, transform=transformer)
+
+        full_test = datasets.MNIST(root=data_path + dataset, train=False, download=True, transform=transformer)
+
+        # Create lists of indices for which the label is either 4 or 9
+        train_indices = [i for i, (_, label) in enumerate(full_train) if label in [4, 9]]
+        test_indices = [i for i, (_, label) in enumerate(full_test) if label in [4, 9]]
+
+        # Create subsets using these indices
+        trainset = Subset(full_train, train_indices)
+        testset = Subset(full_test, test_indices)
+
     
     print(f"The training set is created for the classes : {trainset.classes}")        
 
