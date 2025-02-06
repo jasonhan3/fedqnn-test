@@ -92,6 +92,9 @@ def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num
         train_indices = [i for i, (_, label) in enumerate(full_train) if label in [4, 9]]
         test_indices = [i for i, (_, label) in enumerate(full_test) if label in [4, 9]]
 
+        print(f"load_datasets, train_indices: {train_indices}")
+        print(f"load_datasets, test_indices: {test_indices}")
+
         # Create subsets using these indices
         trainset = Subset(full_train, train_indices)
         testset = Subset(full_test, test_indices)
