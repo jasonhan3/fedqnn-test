@@ -44,7 +44,8 @@ def classes_string(name_dataset):
         classes = ('glioma', 'meningioma', 'notumor', 'pituitary')
     
     elif name_dataset == "MNIST":
-        classes = ('4', '9')
+        # TODO: change the classes string here
+        classes = ('4 - four', '9 - nine')
 
     else:
         print("Warning problem : unspecified dataset")
@@ -75,6 +76,11 @@ def save_matrix(y_true, y_pred, path, classes):
     # To get the normalized confusion matrix
     y_true_mapped = [classes[label] for label in y_true]
     y_pred_mapped = [classes[label] for label in y_pred]
+    print(f"save_matrix, classes: {classes}")
+    print(f"save_matrix, y_true: {y_true}")
+    print(f"save_matrix, y_pred: {y_pred}")
+    print(f"save_matrix, y_true_mapped: {y_true_mapped}")
+    print(f"save_matrix, y_pred_mapped: {y_pred_mapped}")
     # To get the normalized confusion matrix
     cf_matrix_normalized = confusion_matrix(y_true_mapped, y_pred_mapped, labels=classes, normalize='all')
    
@@ -104,6 +110,10 @@ def save_roc(targets, y_proba, path, nbr_classes):
     y_true = np.zeros(shape=(len(targets), nbr_classes))  # array-like of shape (n_samples, n_classes)
     for i in range(len(targets)):
         y_true[i, targets[i]] = 1
+    
+    print(f"save_roc, y_proba: {y_proba}")
+    print(f"save_roc, targets: {targets}")
+    print(f"save_roc, nbr_classes: {nbr_classes}")
 
     # Compute ROC curve and ROC area for each class
     fpr = dict()

@@ -378,6 +378,7 @@ def aggregate_custom(results: List[Tuple[NDArrays, int]]) -> NDArrays:
     # Calculate the total number of examples used during training
     num_examples_total = sum([num_examples for _, num_examples in results])
     # Create a list of weights, each multiplied by the related number of examples
+    # NOTE: when aggregating weights, for layers that don't have parameters/weights, might this be an issue?
     weighted_weights = [
         [layer * num_examples for layer in weights] for weights, num_examples in results
     ]

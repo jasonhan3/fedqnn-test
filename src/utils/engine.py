@@ -48,6 +48,8 @@ def test(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, loss_f
             # Send data to target device
             images, labels = images.to(device), labels.to(device)
 
+            print(f"test, labels: {labels}")
+
             # 1. Forward pass
             output = model(images)
 
@@ -64,6 +66,8 @@ def test(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, loss_f
             y_true.extend(labels)  # Save Truth
             preds = np.argmax(output.detach().cpu().numpy(), axis=1)
             y_pred.extend(preds)  # Save Prediction
+            print(f"test, y_true: {y_true}")
+            print(f"test, y_pred: {y_pred}")
             acc = (preds == labels).mean()
             test_acc += acc
 
@@ -107,6 +111,8 @@ def train_step(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, 
         # Send data to target device
         images, labels = images.to(device), labels.to(device)
 
+        print(f"train_step, labels: {labels}")
+
         # 1. Optimizer zero grad
         optimizer.zero_grad()  # Sets the gradients of all optimized torch.Tensor to zero.
 
@@ -125,6 +131,8 @@ def train_step(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, 
 
         # Calculate and accumulate accuracy metric across all batches
         y_pred_class = torch.argmax(torch.softmax(output, dim=1), dim=1)
+        print(f"train_step, y_pred_class: {y_pred_class}")
+        print(f"train_step, labels: {labels}")
         train_acc += (y_pred_class == labels).sum().item()/len(output)
 
     # Adjust metrics to get average loss and accuracy per batch

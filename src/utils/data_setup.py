@@ -89,8 +89,8 @@ def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num
         full_test = datasets.MNIST(root=data_path + dataset, train=False, download=True, transform=transformer)
 
         # Create lists of indices for which the label is either 4 or 9
-        train_indices = [i for i, (_, label) in enumerate(full_train) if label in [4, 9]]
-        test_indices = [i for i, (_, label) in enumerate(full_test) if label in [4, 9]]
+        train_indices = [i for i, (_, label) in enumerate(full_train) if label in classes_of_interest]
+        test_indices = [i for i, (_, label) in enumerate(full_test) if label in classes_of_interest]
 
         print(f"load_datasets, train_indices: {train_indices}")
         print(f"load_datasets, test_indices: {test_indices}")
