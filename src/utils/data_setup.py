@@ -4,6 +4,8 @@ Contains functionality for creating PyTorch DataLoaders for image classification
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader, random_split, Subset, Dataset
 from .common import *
+from .logger import get_logger
+import logging
 
 # Define a custom dataset wrapper that remaps the labels
 class RelabelSubset(Dataset):
@@ -44,11 +46,12 @@ def split_data_client(dataset, num_clients, seed):
     :param seed: the seed for the random split
     """
     # Split training set into `num_clients` partitions to simulate different local datasets
+    logger = get_logger(logging.INFO)
     partition_size = len(dataset) // num_clients
     lengths = [partition_size] * (num_clients - 1)
     lengths += [len(dataset) - sum(lengths)]
-    print(f"split_data_client, len(lengths): {len(lengths)}")
-    print(f"split_data_client, lengths: {lengths}")
+    logger.debug(f"split_data_client, len(lengths): {len(lengths)}")
+    logger.debug(f"split_data_client, lengths: {lengths}")
     ds = random_split(dataset, lengths, torch.Generator().manual_seed(seed))
     return ds
 
@@ -70,9 +73,10 @@ def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num
     :param data_path_val: the absolute path of the validation data (if None, no validation data)
     :return: the train and test data loaders
     """
-    
+    logger = get_logger(logging.INFO)
+
     list_transforms = [transforms.ToTensor(), transforms.Normalize(**NORMALIZE_DICT[dataset])]
-    print(dataset)
+    logger.info(f"load_datasets, dataset: {dataset}")
 
     if dataset == "cifar":
         # Download and transform CIFAR-10 (train and test)
@@ -113,8 +117,8 @@ def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num
         train_indices = [i for i, (_, label) in enumerate(full_train) if label in classes_of_interest]
         test_indices = [i for i, (_, label) in enumerate(full_test) if label in classes_of_interest]
 
-        print(f"load_datasets, train_indices: {train_indices}")
-        print(f"load_datasets, test_indices: {test_indices}")
+        logger.debug(f"load_datasets, train_indices: {train_indices}")
+        logger.debug(f"load_datasets, test_indices: {test_indices}")
 
         # Create subsets using these indices
         trainset = Subset(full_train, train_indices)
@@ -127,14 +131,14 @@ def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num
         testset = RelabelSubset(testset, mapping)
 
     if (dataset == "cifar" or dataset == "MRI"):
-        print(f"The training set is created for the classes : {trainset.classes}")
+        logger.info(f"The training set is created for the classes : {trainset.classes}")
     elif (dataset == "MNIST"):
-        print(f"The training set is created for the classes: {trainset.dataset.classes}")        
+        logger.info(f"The training set is created for the classes: {trainset.dataset.classes}")        
 
     # Split training set into `num_clients` partitions to simulate different local datasets
     datasets_train = split_data_client(trainset, num_clients, seed)
-    print(f"load_datasets, type(datasets_train): {type(datasets_train)}")
-    print(f"load_datasets, datasets_train: {datasets_train}")
+    logger.debug(f"load_datasets, type(datasets_train): {type(datasets_train)}")
+    logger.debug(f"load_datasets, datasets_train: {datasets_train}")
     if data_path_val:
         valset = datasets.ImageFolder(data_path_val, transform=transformer)
         datasets_val = split_data_client(valset, num_clients, seed)    

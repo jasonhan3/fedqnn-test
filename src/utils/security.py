@@ -9,6 +9,12 @@ import tenseal as ts
 from flwr.common import NDArrays
 from functools import reduce
 
+from .logger import get_logger
+import logging
+
+# TODO: efficiently add logging to homomorphic encryption code; adding logging by adding a function call may
+# introduce nontrivial time overhead
+
 
 # /////////////////////// Homomorphic Encryption \\\\\\\\\\\\\\\\\\\\\\\\\\
 

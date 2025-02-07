@@ -6,6 +6,8 @@ import torch.nn as nn
 from tqdm.auto import tqdm
 from typing import Dict, List, Tuple, Union
 import numpy as np
+from .logger import get_logger
+import logging
 
 
 def test(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, loss_fn: Union[torch.nn.Module, Tuple],
@@ -36,6 +38,7 @@ def test(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, loss_f
     y_true = []
     y_proba = []
     softmax = nn.Softmax(dim=1)
+    logger = get_logger(logging.INFO)
 
     # Turn on inference context manager
     with torch.inference_mode():
@@ -48,7 +51,7 @@ def test(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, loss_f
             # Send data to target device
             images, labels = images.to(device), labels.to(device)
 
-            print(f"test, labels: {labels}")
+            logger.debug(f"test, labels: {labels}")
 
             # 1. Forward pass
             output = model(images)
@@ -66,8 +69,8 @@ def test(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, loss_f
             y_true.extend(labels)  # Save Truth
             preds = np.argmax(output.detach().cpu().numpy(), axis=1)
             y_pred.extend(preds)  # Save Prediction
-            print(f"test, y_true: {y_true}")
-            print(f"test, y_pred: {y_pred}")
+            logger.debug(f"test, y_true: {y_true}")
+            logger.debug(f"test, y_pred: {y_pred}")
             acc = (preds == labels).mean()
             test_acc += acc
 
@@ -99,6 +102,8 @@ def train_step(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, 
 
     (0.1112, 0.8743)
     """
+    logger = get_logger(logging.INFO)
+
     # Put model in training mode
     model.train()
 
@@ -111,7 +116,7 @@ def train_step(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, 
         # Send data to target device
         images, labels = images.to(device), labels.to(device)
 
-        print(f"train_step, labels: {labels}")
+        logger.debug(f"train_step, labels: {labels}")
 
         # 1. Optimizer zero grad
         optimizer.zero_grad()  # Sets the gradients of all optimized torch.Tensor to zero.
@@ -131,8 +136,8 @@ def train_step(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, 
 
         # Calculate and accumulate accuracy metric across all batches
         y_pred_class = torch.argmax(torch.softmax(output, dim=1), dim=1)
-        print(f"train_step, y_pred_class: {y_pred_class}")
-        print(f"train_step, labels: {labels}")
+        logger.debug(f"train_step, y_pred_class: {y_pred_class}")
+        logger.debug(f"train_step, labels: {labels}")
         train_acc += (y_pred_class == labels).sum().item()/len(output)
 
     # Adjust metrics to get average loss and accuracy per batch
@@ -171,6 +176,8 @@ def train(model: torch.nn.Module, train_dataloader: torch.utils.data.DataLoader,
                   val_loss: [...],
                   val_acc: [...]}
     """
+    logger = get_logger(logging.INFO)
+
     # Create empty results dictionary
     results = {"train_loss": [], "train_acc": [], "val_loss": [], "val_acc": []}
 
@@ -186,7 +193,7 @@ def train(model: torch.nn.Module, train_dataloader: torch.utils.data.DataLoader,
         val_loss, val_acc, *_ = test_fn(model=model, dataloader=test_dataloader, loss_fn=loss_fn, device=device)        
             
         # Print out what's happening
-        print(
+        logger.info(
         f"\tTrain Epoch: {epoch + 1} \t"
         f"Train_loss: {train_loss:.4f} | "
         f"Train_acc: {train_acc:.4f} % | "

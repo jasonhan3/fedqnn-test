@@ -6,6 +6,9 @@ import pandas as pd
 import torch.nn.functional
 from collections import OrderedDict
 from .security import *
+from .logger import get_logger
+
+import logging
 
 def choice_device(device):
     """
@@ -37,6 +40,7 @@ def classes_string(name_dataset):
     :param name_dataset: the name of the dataset
     :return: classes (the classes of the dataset) in a tuple
     """
+    logger = get_logger(logging.INFO)
     if name_dataset == "cifar":
         classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
@@ -48,7 +52,7 @@ def classes_string(name_dataset):
         classes = ('4 - four', '9 - nine')
 
     else:
-        print("Warning problem : unspecified dataset")
+        logger.warning("Warning problem : unspecified dataset")
         return ()
 
     return classes
@@ -59,9 +63,10 @@ def supp_ds_store(path):
 
     :param path: path to the folder where the hidden file ".DS_Store" is
     """
+    logger = get_logger(logging.INFO)
     for i in os.listdir(path):
         if i == ".DS_Store":
-            print("Deleting of the hidden file '.DS_Store'")
+            logger.info("Deleting of the hidden file '.DS_Store'")
             os.remove(path + "/" + i)
 
 def save_matrix(y_true, y_pred, path, classes):
@@ -76,11 +81,12 @@ def save_matrix(y_true, y_pred, path, classes):
     # To get the normalized confusion matrix
     y_true_mapped = [classes[label] for label in y_true]
     y_pred_mapped = [classes[label] for label in y_pred]
-    print(f"save_matrix, classes: {classes}")
-    print(f"save_matrix, y_true: {y_true}")
-    print(f"save_matrix, y_pred: {y_pred}")
-    print(f"save_matrix, y_true_mapped: {y_true_mapped}")
-    print(f"save_matrix, y_pred_mapped: {y_pred_mapped}")
+    logger = get_logger(logging.INFO)
+    logger.debug(f"save_matrix, classes: {classes}")
+    logger.debug(f"save_matrix, y_true: {y_true}")
+    logger.debug(f"save_matrix, y_pred: {y_pred}")
+    logger.debug(f"save_matrix, y_true_mapped: {y_true_mapped}")
+    logger.debug(f"save_matrix, y_pred_mapped: {y_pred_mapped}")
     # To get the normalized confusion matrix
     cf_matrix_normalized = confusion_matrix(y_true_mapped, y_pred_mapped, labels=classes, normalize='all')
    
@@ -107,13 +113,14 @@ def save_roc(targets, y_proba, path, nbr_classes):
     :param path: path to save the roc curve
     :param nbr_classes: number of classes
     """
+    logger = get_logger(logging.INFO)
     y_true = np.zeros(shape=(len(targets), nbr_classes))  # array-like of shape (n_samples, n_classes)
     for i in range(len(targets)):
         y_true[i, targets[i]] = 1
     
-    print(f"save_roc, y_proba: {y_proba}")
-    print(f"save_roc, targets: {targets}")
-    print(f"save_roc, nbr_classes: {nbr_classes}")
+    logger.debug(f"save_roc, y_proba: {y_proba}")
+    logger.debug(f"save_roc, targets: {targets}")
+    logger.debug(f"save_roc, nbr_classes: {nbr_classes}")
 
     # Compute ROC curve and ROC area for each class
     fpr = dict()
@@ -191,7 +198,9 @@ def save_graphs(path_save, local_epoch, results, end_file=""):
     :param end_file: end of the name of the file
     """
     os.makedirs(path_save, exist_ok=True)  # to create folders results
-    print("save graph in ", path_save)
+    logger = get_logger(logging.INFO)
+
+    logger.info("save graph in ", path_save)
     # plot training curves (train and validation)
     plot_graph(
         [[*range(local_epoch)]] * 2,
@@ -258,6 +267,8 @@ def set_parameters(net, parameters: List[np.ndarray], context_client=None):
     :param parameters: list of parameters (weights and biases) to set
     :param context_client: context of the crypted weights (if None, set the clear weights)
     """
+    logger = get_logger(logging.INFO)
+
     params_dict = zip(net.state_dict().keys(), parameters)
     if context_client:
         secret_key = context_client.secret_key()
@@ -272,4 +283,4 @@ def set_parameters(net, parameters: List[np.ndarray], context_client=None):
         state_dict = OrderedDict(dico)
 
     net.load_state_dict(state_dict, strict=True)
-    print("Updated model")
+    logger.info("Updated model")
