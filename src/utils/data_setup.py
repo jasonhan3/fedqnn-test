@@ -2,8 +2,29 @@
 Contains functionality for creating PyTorch DataLoaders for image classification data.
 """
 from torchvision import datasets, transforms
-from torch.utils.data import DataLoader, random_split, Subset
+from torch.utils.data import DataLoader, random_split, Subset, Dataset
 from .common import *
+
+# Define a custom dataset wrapper that remaps the labels
+class RelabelSubset(Dataset):
+    def __init__(self, subset, label_mapping):
+        """
+        Args:
+            subset (Dataset): The original dataset or Subset.
+            label_mapping (dict): A dictionary mapping original labels to new labels.
+        """
+        self.subset = subset
+        self.label_mapping = label_mapping
+
+    def __getitem__(self, index):
+        # Get the data from the underlying subset
+        x, y = self.subset[index]
+        # Remap the label using the provided dictionary
+        new_y = self.label_mapping.get(y, y)  # Defaults to y if not found in mapping
+        return x, new_y
+
+    def __len__(self):
+        return len(self.subset)
 
 NUM_WORKERS = os.cpu_count()
 
@@ -98,6 +119,12 @@ def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num
         # Create subsets using these indices
         trainset = Subset(full_train, train_indices)
         testset = Subset(full_test, test_indices)
+
+        # Define the mapping from old labels to new labels
+        mapping = {classes_of_interest[0]: 0, classes_of_interest[1]: 1}
+
+        trainset = RelabelSubset(trainset, mapping)
+        testset = RelabelSubset(testset, mapping)
 
     if (dataset == "cifar" or dataset == "MRI"):
         print(f"The training set is created for the classes : {trainset.classes}")
