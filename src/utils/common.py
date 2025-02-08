@@ -6,7 +6,7 @@ import pandas as pd
 import torch.nn.functional
 from collections import OrderedDict
 from .security import *
-from .logger import get_logger
+from .custom_logger import get_logger
 
 import logging
 

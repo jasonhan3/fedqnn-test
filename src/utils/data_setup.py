@@ -4,7 +4,7 @@ Contains functionality for creating PyTorch DataLoaders for image classification
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader, random_split, Subset, Dataset
 from .common import *
-from .logger import get_logger
+from .custom_logger import get_logger
 import logging
 
 # Define a custom dataset wrapper that remaps the labels
@@ -35,7 +35,7 @@ NORMALIZE_DICT = {
     'cifar': dict(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5)),
     'MRI': dict(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
     # TODO: this is just from online; verify it
-    'MNIST': dict(mean=(0.1307, 0.1307, 0.137), std=(0.3081, 0.3081, 0.3081))   
+    'MNIST': dict(mean=(0.1307, 0.1307, 0.1307), std=(0.3081, 0.3081, 0.3081))   
     }
 
 def split_data_client(dataset, num_clients, seed):

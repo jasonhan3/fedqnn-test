@@ -6,7 +6,7 @@ import torch.nn as nn
 from tqdm.auto import tqdm
 from typing import Dict, List, Tuple, Union
 import numpy as np
-from .logger import get_logger
+from .custom_logger import get_logger
 import logging
 
 
