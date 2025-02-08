@@ -57,6 +57,7 @@ def test(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, loss_f
             output = model(images)
 
             # 2. Calculate and accumulate probas
+            # TODO: think if I want to do softmax?
             probas_output = softmax(output)
             y_proba.extend(probas_output.detach().cpu().numpy())
 
@@ -78,6 +79,7 @@ def test(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, loss_f
     # Adjust metrics to get average loss and accuracy per batch
     test_loss = test_loss / len(dataloader)
     test_acc = test_acc / len(dataloader)
+    logger.debug(f"test, len(dataloader): {len(dataloader)}")
     return test_loss, test_acc * 100, y_pred, y_true, y_proba
 
 
