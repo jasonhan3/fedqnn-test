@@ -133,7 +133,7 @@ def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num
     if (dataset == "cifar" or dataset == "MRI"):
         logger.info(f"The training set is created for the classes : {trainset.classes}")
     elif (dataset == "MNIST"):
-        logger.info(f"The training set is created for the classes: {trainset.dataset.classes}")        
+        logger.info(f"The training set is created for the classes: {trainset.subset.dataset.classes}")        
 
     # Split training set into `num_clients` partitions to simulate different local datasets
     datasets_train = split_data_client(trainset, num_clients, seed)
