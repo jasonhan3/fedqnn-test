@@ -395,7 +395,7 @@ def aggregate_custom(results: List[Tuple[NDArrays, int]]) -> NDArrays:
     return weights_prime
 
 # Redefine the aggregate function (defined in Flower)
-def aggregate_custom_circular(results: List[Tuple[NDArrays, int]], quantum_layer_indices: List[int] = [18]) -> NDArrays:
+def aggregate_custom_circular(results: List[Tuple[NDArrays, int]], quantum_layer_indices: List[int] = [0]) -> NDArrays:
     """Compute weighted average.
     Args:
         results: List of tuples containing the model weights and the number of samples used to compute the weights.
