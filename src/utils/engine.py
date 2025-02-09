@@ -58,7 +58,7 @@ def test(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, loss_f
 
             # 2. Calculate and accumulate probas
             # TODO: think if I want to do softmax?
-            probas_output = softmax(output)
+            probas_output = output
             y_proba.extend(probas_output.detach().cpu().numpy())
 
             # 3. Calculate and accumulate loss
@@ -137,7 +137,7 @@ def train_step(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, 
         optimizer.step()
 
         # Calculate and accumulate accuracy metric across all batches
-        y_pred_class = torch.argmax(torch.softmax(output, dim=1), dim=1)
+        y_pred_class = torch.argmax(output, dim=1)
         logger.debug(f"train_step, y_pred_class: {y_pred_class}")
         logger.debug(f"train_step, labels: {labels}")
         train_acc += (y_pred_class == labels).sum().item()/len(output)
