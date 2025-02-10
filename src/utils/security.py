@@ -418,7 +418,7 @@ def aggregate_custom_circular(results: List[Tuple[NDArrays, int]], quantum_layer
         if layer_idx in quantum_layer_indices:
             stacked_angles = np.stack(layer_params_list, axis=0)
             # sample_counts_arr = np.array(sample_counts)
-            if len(layer_params_list[0].shape == 2):
+            if len(layer_params_list[0].shape) == 2:
                 sample_counts = sample_counts.reshape(-1, 1, 1)
             else:
                 sample_counts = sample_counts.reshape(-1, 1)
